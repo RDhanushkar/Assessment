@@ -1,0 +1,43 @@
+
+.main{
+    background-image: url("./../image/bg.jpg");
+    width: 100%;   
+}
+.title{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    text-align: center;
+    color:  black; 
+    border-color:#e1e7f1;
+    text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        
+    
+}
+.card-header{
+    text-align: center;
+    font-size: large;
+}
+.btn{
+    width: 100%;
+}
+
+.dashboard{
+    background-image: url("./../image/ecom.jpg");
+}
+.row{
+    margin-top: 1%;
+}
+
+.btn-success{
+    width:10%;
+    margin-left: 70%;
+}
