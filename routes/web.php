@@ -33,31 +33,31 @@ Route::get('/dash', [LoginController::class,'dash']);
 
 //dress card
 
-Route::get('/dress', [MenDressController::class,'index']);
-Route::get('/createDress',[MenDressController::class,'create']);
-Route::post('/storeDress',[MenDressController::class,'store']);
+Route::get('dress', [MenDressController::class,'index']);
+Route::get('create-dress',[MenDressController::class,'create']);
+Route::post('create-dress',[MenDressController::class,'store']);
 
-Route::get('/edit/{menDress}', [MenDressController::class,'edit']);
-Route::put('/update/{menDress}', [MenDressController::class,'update']);
-Route::get('/delete/{menDress}', [MenDressController::class,'destroy']);
+Route::get('edit-dress/{id}', [MenDressController::class,'edit']);
+Route::put('update-dress/{id}', [MenDressController::class,'update']);
+Route::get('delete-dress/{id}', [MenDressController::class,'destroy']);
 
 //jeweley card
-Route::get('/jewelry', [MenJewelryController::class,'index']);
-Route::get('/createJewelry',[MenJewelryController::class,'create']);
-Route::post('/storeJewelry',[MenJewelryController::class,'store']);
+Route::get('jewelry', [MenJewelryController::class,'index']);
+Route::get('create-jewelry',[MenJewelryController::class,'create']);
+Route::post('create-jewelry',[MenJewelryController::class,'store']);
 
-Route::get('/edit/{menJewelry}', [MenJewelryController::class,'editJ']);
-Route::put('/update/{menJewelry}', [MenJewelryController::class,'updateJ']);
-Route::get('/delete/{menJewelry}', [MenJewelryController::class,'destroyJ']);
+Route::get('edit-jewelry/{id}', [MenJewelryController::class,'edit']);
+Route::put('update-jewelry/{id}', [MenJewelryController::class,'update']);
+Route::get('delete-jewelry/{id}', [MenJewelryController::class,'destroy']);
 
 //shoes card
-Route::get('/shoes', [MenShoesController::class,'index']);
-Route::get('/createShoes',[MenShoesController::class,'create']);
-Route::post('/storeShoes',[MenShoesController::class,'store']);
+Route::get('shoes', [MenShoesController::class,'index']);
+Route::get('create-shoes',[MenShoesController::class,'create']);
+Route::post('create-shoes',[MenShoesController::class,'store']);
 
-Route::get('/edit/{menShoes}', [MenShoesController::class,'edit']);
-Route::put('/update/{menShoes}', [MenShoesController::class,'update']);
-Route::get('/delete/{menShoes}', [MenShoesController::class,'destroy']);
+Route::get('edit-shoes/{id}', [MenShoesController::class,'edit']);
+Route::put('update-shoes/{id}', [MenShoesController::class,'update']);
+Route::get('delete-shoes/{id}', [MenShoesController::class,'destroy']);
 
 
 

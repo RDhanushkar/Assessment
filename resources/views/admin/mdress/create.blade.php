@@ -2,25 +2,33 @@
 @section('adminlayout')
 
 <div>
-    <a href="/dress">
+    <a href="{{url('dress')}}">
         <button type="button" class="btn btn-success">Back</button>
     </a>
 </div>
 
 @if ($errors->any())
     <div class="alert alert-danger">
-        <strong>Whoops</strong>There were some problems with your input. <br>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
 @endif
 
+<div style="margin-top:1%; width:60%; margin-left: auto; margin-right: auto;">
+    @if(session('status'))
+        <h6 class="alert alert-success">{{session('status')}}</h6>
+    @endif
+</div>
+
 <div class="card" style="margin-top:1%; width:60%;">
+ 
+    
+
   <div class="card-body">
-    <form  method="POST" action="/storeDress" enctype="multipart/form-data">
+    <form  method="POST" action="{{url('create-dress')}}" enctype="multipart/form-data">
     @csrf
         <div class="mb-3">
             <h1>Add new item</h1>

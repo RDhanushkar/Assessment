@@ -2,7 +2,7 @@
 @section('adminlayout')
 
 <div>
-    <a href="/shoes">
+    <a href="{{url('shoes')}}">
         <button type="button" class="btn btn-success">Back</button>
     </a>
 </div>
@@ -18,9 +18,15 @@
     </div>
 @endif
 
+<div style="margin-top:1%; width:60%; margin-left: auto; margin-right: auto;">
+    @if(session('status'))
+        <h6 class="alert alert-success">{{session('status')}}</h6>
+    @endif
+</div>
+
 <div class="card" style="margin-top:1%; width:60%;">
   <div class="card-body">
-    <form  method="POST" action="/storeShoes" enctype="multipart/form-data">
+    <form  method="POST" action="{{url('create-dress')}}" enctype="multipart/form-data">
     @csrf
         <div class="mb-3">
             <h1>Add new item</h1>

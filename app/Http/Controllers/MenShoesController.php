@@ -61,7 +61,7 @@ class MenShoesController extends Controller
         $menShoes->price = $request->input('price');
         $menShoes->detail = $request->input('detail');
         $menShoes->save();
-        return redirect("admin.mshoes.index")->with('success','Product created successfully');
+        return redirect()->back()->with('status','Product created successfully');
     }
 
     /**
@@ -81,9 +81,10 @@ class MenShoesController extends Controller
      * @param  \App\Models\MenShoes  $menShoes
      * @return \Illuminate\Http\Response
      */
-    public function edit(MenShoes $menShoes)
+    public function edit($id)
     {
         //
+        $menShoes = MenShoes::find($id);
         return view('admin.mshoes.edit',compact('menShoes'));
     }
 
@@ -94,15 +95,16 @@ class MenShoesController extends Controller
      * @param  \App\Models\MenShoes  $menShoes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MenShoes $menShoes)
+    public function update(Request $request,$id)
     {
         //
-        $menJewelry->name = $request->input('name');
+        $menShoes = MenShoes::find($id);
+        $menShoes->name = $request->input('name');
         
         
         if($request->hasfile('photo'))
         {
-            $destination = 'image/'. $menJewelry->photo;
+            $destination = 'image/'. $menShoes->photo;
             if(File::exists($destination))
             {
                 File::delete($destination);
@@ -112,14 +114,14 @@ class MenShoesController extends Controller
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('image/',$filename);
-            $menJewelry->photo = $filename;
+            $menShoes->photo = $filename;
         }
         
         
-        $menJewelry->price = $request->input('price');
-        $menJewelry->detail = $request->input('detail');
-        $menJewelry->update();
-        return redirect("admin.mjewelry.index")->with('success','Product updated successfully');
+        $menShoes->price = $request->input('price');
+        $menShoes->detail = $request->input('detail');
+        $menShoes->update();
+        return redirect()->back()->with('status','Product updated successfully');
     }
 
     /**
@@ -128,15 +130,16 @@ class MenShoesController extends Controller
      * @param  \App\Models\MenShoes  $menShoes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MenShoes $menShoes)
+    public function destroy($id)
     {
         //
+        $menShoes = MenShoes::find($id);
         $destination = 'image/'. $menShoes->photo;
         if(File::exists($destination))
         {
             File::delete($destination);
         }
         $menShoes->delete();
-        return redirect("admin.mshoes.index")->with('success','Product deleted successfully');
+        return redirect()->back()->with('status','Product updated successfully');
     }
 }

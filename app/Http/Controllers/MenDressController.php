@@ -60,7 +60,7 @@ class MenDressController extends Controller
         $menDress->price = $request->input('price');
         $menDress->detail = $request->input('detail');
         $menDress->save();
-        return redirect("admin.mdress.index")->with('success','Product created successfully');
+        return redirect()->back()->with('status','Product created successfully');
 
     }
 
@@ -81,9 +81,10 @@ class MenDressController extends Controller
      * @param  \App\Models\MenDress  $menDress
      * @return \Illuminate\Http\Response
      */
-    public function edit(MenDress $menDress)
+    public function edit($id)
     {
         //
+        $menDress = MenDress::find($id);
         return view('admin.mdress.edit',compact('menDress'));
     }
 
@@ -94,10 +95,10 @@ class MenDressController extends Controller
      * @param  \App\Models\MenDress  $menDress
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MenDress $menDress)
+    public function update(Request $request, $id)
     {
         //
-        
+        $menDress = MenDress::find($id);
         $menDress->name = $request->input('name');
         
         
@@ -120,7 +121,7 @@ class MenDressController extends Controller
         $menDress->price = $request->input('price');
         $menDress->detail = $request->input('detail');
         $menDress->update();
-        return redirect("admin.mdress.index")->with('success','Product updated successfully');
+        return redirect()->back()->with('status','Product updated successfully');
     }
 
     /**
@@ -129,16 +130,17 @@ class MenDressController extends Controller
      * @param  \App\Models\MenDress  $menDress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MenDress $menDress)
+    public function destroy($id)
     {
         //
+        $menDress = MenDress::find($id);
         $destination = 'image/'. $menDress->photo;
         if(File::exists($destination))
         {
             File::delete($destination);
         }
         $menDress->delete();
-        return redirect("admin.mdress.index")->with('success','Product deleted successfully');
+        return redirect()->back()->with('status','Product deleted successfully');
 
     }
 }

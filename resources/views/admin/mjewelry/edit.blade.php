@@ -2,16 +2,21 @@
 @section('adminlayout')
 
 <div>
-    <a href="/jewelry">
+    <a href="{{url('jewelry')}}">
         <button type="button" class="btn btn-success">Back</button>
     </a>
 </div>
 
+<div style="margin-top:1%; width:60%; margin-left: auto; margin-right: auto;">
+    @if(session('status'))
+        <h6 class="alert alert-success">{{session('status')}}</h6>
+    @endif
+</div>
 
 
 <div class="card" style="margin-top:1%; width:60%;">
   <div class="card-body">
-    <form  method="POST" action="/update/{{$menJewelry->id}}" enctype="multipart/form-data">
+    <form  method="POST" action="{{url('update-jewelry/'.$menJewelry ->id)}} " enctype="multipart/form-data">
     @csrf
     @method('PUT')
         <div class="mb-3">
@@ -41,7 +46,7 @@
         </div>
 
         <div class="mb-3">
-            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-primary" type="submit">Update</button>
         </div>
     </form>
   </div>

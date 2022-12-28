@@ -60,7 +60,7 @@ class MenJewelryController extends Controller
         $menJewelry->price = $request->input('price');
         $menJewelry->detail = $request->input('detail');
         $menJewelry->save();
-        return redirect("admin.mjewelry.index")->with('success','Product created successfully');
+        return redirect()->back()->with('status','Product created successfully');
     }
 
     /**
@@ -80,9 +80,10 @@ class MenJewelryController extends Controller
      * @param  \App\Models\MenJewelry  $menJewelry
      * @return \Illuminate\Http\Response
      */
-    public function editj(MenJewelry $menJewelry)
+    public function edit($id)
     {
         //
+        $menJewelry = MenJewelry::find($id);
         return view('admin.mjewelry.edit',compact('menJewelry'));
     }
 
@@ -93,9 +94,10 @@ class MenJewelryController extends Controller
      * @param  \App\Models\MenJewelry  $menJewelry
      * @return \Illuminate\Http\Response
      */
-    public function updateJ(Request $request, MenJewelry $menJewelry)
+    public function update(Request $request,$id)
     {
         //
+        $menJewelry = MenJewelry::find($id);
         $menJewelry->name = $request->input('name');
         
         
@@ -118,7 +120,7 @@ class MenJewelryController extends Controller
         $menJewelry->price = $request->input('price');
         $menJewelry->detail = $request->input('detail');
         $menJewelry->update();
-        return redirect("admin.mjewelry.index")->with('success','Product updated successfully');
+        return redirect()->back()->with('status','Product updated successfully');
     }
 
     /**
@@ -127,15 +129,16 @@ class MenJewelryController extends Controller
      * @param  \App\Models\MenJewelry  $menJewelry
      * @return \Illuminate\Http\Response
      */
-    public function destroyJ(MenJewelry $menJewelry)
+    public function destroy($id)
     {
         //
+        $menJewelry = MenJewelry::find($id);
         $destination = 'image/'. $menJewelry->photo;
         if(File::exists($destination))
         {
             File::delete($destination);
         }
         $menJewelry->delete();
-        return redirect("admin.mjewelry.index")->with('success','Product deleted successfully');
+        return redirect()->back()->with('status','Product updated successfully');
     }
 }

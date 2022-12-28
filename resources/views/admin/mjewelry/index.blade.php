@@ -5,16 +5,17 @@
     <h3 style="text-align:center;">Men's Jewelry</h3>
 </div>
 <div>
-    <a href="/createJewelry">
+    <a href="{{url('create-jewelry')}}">
         <button type="button" class="btn btn-success">Add Item</button>
     </a>
 </div>
 
-@if($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{$message}}</p>
-    </div>
-@endif
+
+<div style="margin-top:1%; width:60%; margin-left: auto; margin-right: auto;">
+    @if(session('status'))
+        <h6 class="alert alert-danger">{{session('status')}}</h6>
+    @endif
+</div>
 
 <div class="card" style="margin-top:1%; width:80%;">
   <table class="table table-bordered" style="text-align:center;">
@@ -36,10 +37,10 @@
         <td>
             <form action="" method="post">
                 
-                <a href="/edit/{{$menJewelry -> id}}" class="btn btn-info" style="width:40%">Edit</a>
+                <a href="{{url('edit-jewelry/'.$menJewelry -> id)}}" class="btn btn-info" style="width:40%">Edit</a>
                 @csrf
                 @method('DELETE')
-                <a href="/delete/{{$menJewelry -> id}}" class="btn btn-danger" style="width:40%">Delete</a>     
+                <a href="{{url('delete-jewelry/'.$menJewelry -> id)}}" class="btn btn-danger" style="width:40%">Delete</a>     
             </form>
         </td>
     </tr>
